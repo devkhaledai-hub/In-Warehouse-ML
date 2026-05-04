@@ -1,0 +1,6 @@
+streamlit>=1.33
+google-cloud-bigquery>=3.20
+google-api-core>=2.18
+python-dotenv>=1.0
+pandas>=2.0
+db-dtypes>=1.2

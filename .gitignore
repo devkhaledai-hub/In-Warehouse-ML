@@ -1,0 +1,12 @@
+.env
+*.json
+*.mp4
+*.mov
+*.avi
+*.mkv
+*.webm
+__pycache__/
+*.pyc
+.streamlit/secrets.toml
+.venv/
+venv/
