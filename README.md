@@ -90,18 +90,20 @@ The model stays inside BigQuery. The app does not download or serialize the ML m
 
 ```text
 In-Warehouse ML/
-├── app.py
-├── requirements.txt
-├── README.md
-├── .gitignore
-├── .env                       # Local only, ignored by git
-└── service-account.json        # Local only, ignored by git
+|-- app.py
+|-- requirements.txt
+|-- README.md
+|-- .env.example               # Safe template for local configuration
+|-- .gitignore
+|-- .env                       # Local only, ignored by git
+`-- service-account.json        # Local only, ignored by git
 ```
 
 Important files:
 
 - `app.py` contains the Streamlit application and BigQuery query logic.
 - `requirements.txt` lists the Python packages needed to run the app.
+- `.env.example` shows the environment variables needed to configure the app.
 - `.gitignore` prevents local secrets, generated files, and video files from being committed.
 - `.env` should contain your local Google Cloud configuration.
 
@@ -207,25 +209,22 @@ pip install -r requirements.txt
 
 ## Environment Variables
 
-Create a `.env` file in the project root.
+Create a `.env` file in the project root from the provided template.
+
+```powershell
+copy .env.example .env
+```
 
 Example:
 
 ```env
 GOOGLE_CLOUD_PROJECT=your-google-cloud-project-id
+GOOGLE_PROJECT_ID=your-google-cloud-project-id
 GOOGLE_APPLICATION_CREDENTIALS=your-service-account-file.json
 BQ_MODEL_DATASET=bmAI
 ```
 
-For the local project used during development, the values looked like:
-
-```env
-GOOGLE_CLOUD_PROJECT=linen-mason-495011-b4
-GOOGLE_APPLICATION_CREDENTIALS=linen-mason-495011-b4-c37bfaefc39d.json
-BQ_MODEL_DATASET=bmAI
-```
-
-Do not commit `.env` or service account JSON files to GitHub.
+Replace the placeholder values with your own project ID and service account JSON filename. Do not commit `.env` or service account JSON files to GitHub.
 
 ## Run the App
 
